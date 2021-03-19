@@ -1,12 +1,13 @@
 require_relative '../src/main'
 
+RULES = [
+  Rule.new('A', RuleStrategies::TierStrategy.new(1 => 50, 3 => 130)),
+  Rule.new('B', RuleStrategies::TierStrategy.new(1 => 30, 2 => 45)),
+  Rule.new('C', RuleStrategies::SimpleStrategy.new(20)),
+  Rule.new('D', RuleStrategies::SimpleStrategy.new(15))
+]
+
 RSpec.describe CheckOut do
-  RULES = [
-    Rule.new('A', RuleStrategies::TierStrategy.new(1 => 50, 3 => 130)),
-    Rule.new('B', RuleStrategies::TierStrategy.new(1 => 30, 2 => 45)),
-    Rule.new('C', RuleStrategies::SimpleStrategy.new(20)),
-    Rule.new('D', RuleStrategies::SimpleStrategy.new(15))
-  ]
 
   def price(goods)
     checkout = CheckOut.new(RULES)
