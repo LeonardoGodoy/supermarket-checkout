@@ -8,7 +8,6 @@ RULES = [
 ]
 
 RSpec.describe CheckOut do
-
   def price(goods)
     checkout = CheckOut.new(RULES)
     goods.split(//).each { |item| checkout.scan(item) }
